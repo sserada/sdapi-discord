@@ -2,11 +2,14 @@ import base64
 import io
 import json
 import os
+import logging
 from typing import Optional
 
 import httpx
 
 from .exceptions import ApiClientError, ApiConnectionError, ApiTimeoutError
+
+logger = logging.getLogger(__name__)
 
 
 def generate_image(prompt: str, negative_prompt: Optional[str] = None, seed: Optional[int] = -1, steps: Optional[int] = 20, width: Optional[int] = 512, height: Optional[int] = 512, sampler: Optional[str] = "Euler a", cfg_scale: Optional[float] = 7.0) -> tuple[io.BytesIO, str]:
@@ -16,7 +19,7 @@ def generate_image(prompt: str, negative_prompt: Optional[str] = None, seed: Opt
 
     payload = {
         "prompt": prompt,
-        "negative_prompt": negative_prompt,
+        "negative_prompt": negative_prompt if negative_prompt is not None else "",
         "seed": seed,
         "steps": steps,
         "width": width,
@@ -25,6 +28,7 @@ def generate_image(prompt: str, negative_prompt: Optional[str] = None, seed: Opt
         "cfg_scale": cfg_scale,
     }
 
+    logger.info(f"Sending payload to API: {json.dumps(payload, indent=2)}")
     try:
         with httpx.Client() as client:
             response = client.post(url=f'{api_url}/sdapi/v1/txt2img', json=payload, timeout=120)

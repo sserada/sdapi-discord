@@ -37,21 +37,21 @@ def main():
         steps="The number of steps to use for generation.",
         width="The width of the generated image.",
         height="The height of the generated image.",
-        sampler="The sampler to use for generation.",
+        sampler_name="The sampler to use for generation.",
         cfg_scale="The CFG scale to use for generation.",
     )
-    @app_commands.choices(sampler=[
+    @app_commands.choices(sampler_name=[
         app_commands.Choice(name="Euler a", value="Euler a"),
         app_commands.Choice(name="DPM++ 2M Karras", value="DPM++ 2M Karras"),
         app_commands.Choice(name="DPM++ SDE Karras", value="DPM++ SDE Karras"),
         app_commands.Choice(name="DDIM", value="DDIM"),
     ])
-    async def generate(interaction: discord.Interaction, prompt: str, negative_prompt: Optional[str] = None, seed: Optional[int] = -1, steps: Optional[int] = 20, width: Optional[int] = 512, height: Optional[int] = 512, sampler: Optional[app_commands.Choice[str]] = None, cfg_scale: Optional[float] = 7.0):
+    async def generate(interaction: discord.Interaction, prompt: str, negative_prompt: Optional[str] = None, seed: Optional[int] = -1, steps: Optional[int] = 20, width: Optional[int] = 512, height: Optional[int] = 512, sampler_name: Optional[app_commands.Choice[str]] = None, cfg_scale: Optional[float] = 7.0):
         logger.info(f"/generate command received from {interaction.user} with prompt: {prompt}")
         await interaction.response.defer()
         try:
-            sampler_name = sampler.value if sampler else "Euler a"
-            image_bytes, info = await asyncio.to_thread(generate_image, prompt, negative_prompt, seed, steps, width, height, sampler_name, cfg_scale)
+            sampler_value = sampler_name.value if sampler_name else "Euler a"
+            image_bytes, info = await asyncio.to_thread(generate_image, prompt, negative_prompt, seed, steps, width, height, sampler_value, cfg_scale)
             
             embed = discord.Embed(title="Image Generation Complete", color=0x00ff00)
             embed.add_field(name="Prompt", value=prompt, inline=False)
