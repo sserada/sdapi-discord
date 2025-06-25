@@ -4,6 +4,7 @@ from typing import Optional
 from discord import app_commands
 from dotenv import load_dotenv
 from .api_client import generate_image
+from .exceptions import ApiClientError, ApiConnectionError, ApiTimeoutError
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
@@ -60,8 +61,14 @@ def main():
             embed.set_image(url="attachment://image.png")
 
             await interaction.followup.send(embed=embed, file=file)
+        except ApiConnectionError:
+            await interaction.followup.send("Error: Could not connect to the Stable Diffusion API. Please check if the server is running.")
+        except ApiTimeoutError:
+            await interaction.followup.send("Error: The request to the Stable Diffusion API timed out. Please try again later.")
+        except ApiClientError as e:
+            await interaction.followup.send(f"An error occurred with the API request: {e}")
         except Exception as e:
-            await interaction.followup.send(f"An error occurred: {e}")
+            await interaction.followup.send(f"An unexpected error occurred: {e}")
 
     client.run(os.getenv('DISCORD_BOT_TOKEN'))
 
