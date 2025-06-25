@@ -1,31 +1,38 @@
 ---
-name: "🐛 バグ報告"
-about: バグの詳細を報告して、プロジェクトの改善にご協力ください
-title: "🐛 [BUG] "
-labels: bug
+name: Bug Report
+about: Create a report to help us improve
+title: ''
+labels: ''
 assignees: ''
 
 ---
 
-### 概要
-<!-- バグの概要を簡潔に説明してください -->
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-### 再現手順
-<!-- バグを再現させるための具体的な手順を記述してください -->
-1. このコマンドを実行した: `...`
-2. このパラメータを使用した: `...`
-3. このエラーが発生した: `...`
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
-### 期待される動作
-<!-- 本来であれば、どのような動作になることを期待していましたか？ -->
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
-### 実際の動作
-<!-- 実際にどのような動作やエラーメッセージが表示されましたか？可能であればスクリーンショットも添付してください -->
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
 
-### 環境
- - OS: [例: Windows 11, Ubuntu 22.04]
- - Pythonバージョン: [例: 3.11]
- - Botのバージョン: [例: v1.0.0]
+**Desktop (please complete the following information):**
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
 
-### 追加情報
-<!-- その他、バグに関する補足情報があれば記述してください（ログなど） -->
+**Smartphone (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
+ - Browser [e.g. stock browser, safari]
+ - Version [e.g. 22]
+
+**Additional context**
+Add any other context about the problem here.

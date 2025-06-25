@@ -1,20 +1,20 @@
 ---
-name: "✨ 機能要望"
-about: 新しい機能や改善点のアイデアを提案してください
-title: "✨ [FEAT] "
-labels: enhancement
+name: Feature Request
+about: Suggest an idea for this project
+title: ''
+labels: ''
 assignees: ''
 
 ---
 
-### 関連する問題はありますか？
-<!-- この機能要望が、現在発生している問題に関連している場合は記述してください。例: 「〇〇をするのが面倒なので、もっと簡単にしてほしい」 -->
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-### どのような解決策を提案しますか？
-<!-- どのような機能があれば、その問題が解決できるか具体的に説明してください -->
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
 
-### 検討した代替案はありますか？
-<!-- 他に検討した解決策や機能があれば記述してください -->
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
 
-### 追加情報
-<!-- その他、機能に関する補足情報があれば記述してください（参考URL、デザイン案など） -->
+**Additional context**
+Add any other context or screenshots about the feature request here.
