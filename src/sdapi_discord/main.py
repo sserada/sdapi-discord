@@ -70,6 +70,23 @@ def main():
         except Exception as e:
             await interaction.followup.send(f"An unexpected error occurred: {e}")
 
+    @client.tree.command(name="help", description="Show help information.")
+    async def help(interaction: discord.Interaction):
+        embed = discord.Embed(title="Help - Stable Diffusion Bot", description="This bot generates images from text prompts using the Stable Diffusion API.", color=0x0099ff)
+        
+        embed.add_field(name="/generate", value="Generates an image based on a prompt.", inline=False)
+        embed.add_field(name="prompt", value="(Required) The main description of the image you want to generate.", inline=True)
+        embed.add_field(name="negative_prompt", value="(Optional) A description of what you want to avoid in the image.", inline=True)
+        embed.add_field(name="seed", value="(Optional) A specific number to reproduce a previous image.", inline=True)
+        embed.add_field(name="steps", value="(Optional) The number of generation steps. Higher can be better but slower.", inline=True)
+        embed.add_field(name="sampler", value="(Optional) The sampling method to use.", inline=True)
+        embed.add_field(name="cfg_scale", value="(Optional) How strongly the image should conform to the prompt.", inline=True)
+        embed.add_field(name="width", value="(Optional) The width of the image.", inline=True)
+        embed.add_field(name="height", value="(Optional) The height of the image.", inline=True)
+
+        embed.set_footer(text="Enjoy creating!")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
     client.run(os.getenv('DISCORD_BOT_TOKEN'))
 
 if __name__ == '__main__':
