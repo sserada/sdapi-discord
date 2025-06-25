@@ -21,7 +21,7 @@ This project is a Discord bot that uses the Stable Diffusion API to generate ima
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/sdapi-discord.git
+    git clone https://github.com/sserada/sdapi-discord.git
     cd sdapi-discord
     ```
 

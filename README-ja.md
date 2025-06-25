@@ -21,7 +21,7 @@
 1.  **リポジトリをクローンします:**
 
     ```bash
-    git clone https://github.com/your-username/sdapi-discord.git
+    git clone https://github.com/sserada/sdapi-discord.git
     cd sdapi-discord
     ```
 
