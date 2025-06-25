@@ -1,6 +1,7 @@
 import discord
 import os
 import logging
+import asyncio
 from typing import Optional
 from discord import app_commands
 from dotenv import load_dotenv
@@ -50,7 +51,7 @@ def main():
         await interaction.response.defer()
         try:
             sampler_name = sampler.value if sampler else "Euler a"
-            image_bytes, info = await discord.utils.to_thread(generate_image, prompt, negative_prompt, seed, steps, width, height, sampler_name, cfg_scale)
+            image_bytes, info = await asyncio.to_thread(generate_image, prompt, negative_prompt, seed, steps, width, height, sampler_name, cfg_scale)
             
             embed = discord.Embed(title="Image Generation Complete", color=0x00ff00)
             embed.add_field(name="Prompt", value=prompt, inline=False)
