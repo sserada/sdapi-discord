@@ -1,4 +1,6 @@
 import discord
+import os
+from dotenv import load_dotenv
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -9,9 +11,11 @@ class MyClient(discord.Client):
 
 
 def main():
-    client = MyClient()
-    # ここにBotのトークンを設定しますが、次のIssueで.envから読み込むように変更します
-    # client.run('YOUR_DISCORD_BOT_TOKEN')
+    load_dotenv()
+    intents = discord.Intents.default()
+    intents.message_content = True
+    client = MyClient(intents=intents)
+    client.run(os.getenv('DISCORD_BOT_TOKEN'))
 
 if __name__ == '__main__':
     main()
